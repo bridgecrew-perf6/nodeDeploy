@@ -3,10 +3,10 @@
 APP_NAME = "NODEJS DEMO APP"
 
 
-all: install test server
+all: install tests server
 
 
-test: ;@echo "Testing ${APP_NAME}....."; \
+tests: ;@echo "Testing ${APP_NAME}....."; \
 	export NODE_PATH=.; \
 	./node_modules/mocha/bin/mocha;
 
@@ -29,4 +29,4 @@ clean : ;
 	rm -rf node_modules
 
 
-.PHONY: test server install clean update
+.PHONY: tests server install clean update

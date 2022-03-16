@@ -1,20 +1,23 @@
 pipeline {
     agent any 
+    environment {
+         SERVICE_NAME = "NodeJS Demo APP"
+    }
     stages {
-        stage('Linting') { 
+        stage('Testing') { 
             steps {
-                echo 'Checking'
+                sh "make tests"
             }
         }
         stage('Build') { 
             steps {
-                echo 'Building'
+                sh "make install"
             }
         }
         stage('Deployment') { 
             steps {
                 // 
-                echo 'Deploying'
+                sh "make pm2Start"
             }
         }
     }
