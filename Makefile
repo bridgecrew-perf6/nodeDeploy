@@ -24,7 +24,7 @@ update: ;@echo "Updating ${APP_NAME}....."; \
 pm2Start: ;@echo "PM2 Starting ${APP_NAME}....."; \
 	export NODE_PATH=.; \
 	export BUILD_ID=dontKillMePlease ;\
-	pm2 restart server.js	
+	pm2 start server.js	
 
 clean : ;
 	rm -rf node_modules
