@@ -17,7 +17,8 @@ pipeline {
         stage('Deployment') { 
             steps {
                 // 
-                sh "make pm2Start"
+               // sh "make pm2Start"
+                sshagent (credentials: ['www']) { sh 'make check' }
             }
         }
     }
