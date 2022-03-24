@@ -28,6 +28,10 @@ pm2Start: ;@echo "PM2 Starting ${APP_NAME}....."; \
 
 clean : ;
 	rm -rf node_modules
+	
+check: ;
+	ls; \
+	whoami;	
 
 
 .PHONY: tests server install clean update
