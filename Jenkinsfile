@@ -6,12 +6,14 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh "make install"
+                //sh "make install"
+                echo "Build"
             }
         }
         stage('Test') { 
             steps {
-                sh "make tests"
+               // sh "make tests"
+               echo "tests"
             }
         }
         stage('Deployment') { 
