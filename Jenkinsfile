@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // 
                // sh "make pm2Start"
-                sshagent (credentials: ['www']) { sh 'make check' }
+                sshagent (credentials: ['NODE_USER']) { sh 'make check' }
             }
         }
     }
