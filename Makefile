@@ -30,7 +30,8 @@ clean : ;
 	rm -rf node_modules
 
 deploy: ;
-	rsync -avz -e "ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60" --progress *   www@15.206.94.236:/home/www/nodeApp;
+	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   www@15.206.94.236:/home/www/nodeApp;
+	ssh -o StrictHostKeyChecking=no -l www 15.206.94.236 "pwd; ls; whoami" ;
 	pwd;
 	chmod a+rx /home/www/nodeApp;
 	cd /home/www/nodeApp;
