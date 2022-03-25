@@ -30,8 +30,8 @@ clean : ;
 	rm -rf node_modules
 
 deploy: ;
-	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   www@15.206.94.236:/home/www/nodeApp  "pwd; ls; whoami";
-##	ssh -o StrictHostKeyChecking=no -l www 15.206.94.236 "pwd; ls; whoami" ;
+	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   www@15.206.94.236:/home/www/nodeApp ;
+	ssh -o StrictHostKeyChecking=no -l www 15.206.94.236 "cd nodeApp; pm2 start server.js" ;
 
 zipit:
 	name="backup-"`date +%s`; 
