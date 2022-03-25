@@ -31,6 +31,8 @@ clean : ;
 
 deploy: ;
 	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   www@15.206.94.236:/home/www/nodeApp;
+	pwd;
+	chmod a+rx /home/www/nodeApp;
 	cd /home/www/nodeApp;
 	pm2 start server.js
 
