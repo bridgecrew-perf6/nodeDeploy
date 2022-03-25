@@ -6,21 +6,21 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                //sh "make install"
-                echo "Build"
+                sh "make install"
+                //echo "Build"
             }
         }
         stage('Test') { 
             steps {
-               // sh "make tests"
-               echo "tests"
+                sh "make tests"
+               //echo "tests"
             }
         }
         stage('Deployment') { 
             steps {
                 // 
                // sh "make pm2Start"
-                sshagent (credentials: ['NODE_USER']) { sh 'make check' }
+                sshagent (credentials: ['NODE_USER']) { sh 'make deploy' }
             }
         }
     }

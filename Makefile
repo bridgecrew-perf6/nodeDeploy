@@ -29,8 +29,14 @@ pm2Start: ;@echo "PM2 Starting ${APP_NAME}....."; \
 clean : ;
 	rm -rf node_modules
 
-check: ;
-	ssh -o StrictHostKeyChecking=no -l www 15.206.94.236 "pwd; ls; whoami" ;
+deploy: ;
+	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   www@15.206.94.236:/homw/www/nodeApp
+
+##	ssh -o StrictHostKeyChecking=no -l www 15.206.94.236 "pwd; ls; whoami" ;
+
+zipit:
+	name="backup-"`date +%s`; 
+	tar cvfz "${name}.tgz"  --exclude "node_modules" * ;
 
 
-.PHONY: tests server install clean update
+.PHONY: tests server install clean update deploy
