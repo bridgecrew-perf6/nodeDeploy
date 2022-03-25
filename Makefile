@@ -1,6 +1,8 @@
 ## Makefile for NodeJs application
 
 APP_NAME = "NODEJS DEMO APP"
+SERVER_IP = 15.206.94.236
+USER = www
 
 
 all: install tests server
@@ -30,12 +32,11 @@ clean : ;
 	rm -rf node_modules
 
 deploy: ;
-	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   www@15.206.94.236:/home/www/nodeApp ;
-	ssh -o StrictHostKeyChecking=no -l www 15.206.94.236 "cd nodeApp; pm2 start server.js" ;
+	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   ${USER}@${SERVER_IP}:/home/www/nodeApp ;
+	ssh -o StrictHostKeyChecking=no -l ${USER} ${SERVER_IP} "cd nodeApp; pm2 start server.js" ;
 
 zipit:
-	name="backup-"`date +%s`; 
-	tar cvfz "${name}.tgz"  --exclude "node_modules" * ;
+	tar cvfz "backup-"`date +%s`  --exclude "node_modules" * ;
 
 
 .PHONY: tests server install clean update deploy
