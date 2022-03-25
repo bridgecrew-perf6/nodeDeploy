@@ -33,7 +33,7 @@ clean : ;
 
 deploy: ;
 	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   ${USER}@${SERVER_IP}:/home/www/nodeApp ;
-	ssh -o StrictHostKeyChecking=no -l ${USER} ${SERVER_IP} "cd nodeApp; pm2 start server.js" ;
+	ssh -o StrictHostKeyChecking=no -l ${USER} ${SERVER_IP} "cd nodeApp; pm2 restart all" ;
 
 zipit:
 	tar cvfz "backup-"`date +%s`  --exclude "node_modules" * ;
