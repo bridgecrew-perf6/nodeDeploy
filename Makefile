@@ -1,7 +1,7 @@
 ## Makefile for NodeJs application
 
 APP_NAME = "NODEJS DEMO APP"
-SERVER_IP = 15.206.94.236
+SERVER_IP = 13.232.2.88
 USER = www
 
 
