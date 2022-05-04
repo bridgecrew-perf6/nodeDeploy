@@ -32,7 +32,7 @@ clean : ;
 	rm -rf node_modules
 
 deploy: ;
-	rsync -avz -e "ssh -o StrictHostKeyChecking=no" --progress *   ${USER}@${SERVER_IP}:/home/www/nodeApp ;
+	rsync -avz -e "ssh -v -o StrictHostKeyChecking=no" --progress *   ${USER}@${SERVER_IP}:/home/www/nodeApp ;
 	ssh -o StrictHostKeyChecking=no -l ${USER} ${SERVER_IP} "cd nodeApp; pm2 restart all" ;
 
 zipit:
