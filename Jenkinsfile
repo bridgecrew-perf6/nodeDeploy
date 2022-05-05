@@ -5,15 +5,26 @@ pipeline {
     }
     stages {
         stage('Build') { 
+            environment {
+		DB_HOST = credentials('MONGODB_HOST')
+		DB_PASS = credentials('MONGODB_PASS')
+        JWT_KEY = credentials('JWT_KEY')
+		
+      }
             steps {
+                echo "DISPLAYING ALL ENVIRONMENT VARIABLES...."
+                echo "JWT_KEY: ${JWT_KEY}"
+                echo "HOST: ${DB_HOST}"
+                echo "PASSWORD: ${DB_PASS}"
+                echo "#####Initiating Deployment "
                 sh "make install"
-                withCredentials([usernamePassword(credentialsId: 'DB_HOST', passwordVariable: 'DB_PASS', usernameVariable: 'DB_HOST')]) {
-    // the code here can access $pass and $user
-                sh 'echo $DB_PASS'
+             //   withCredentials([usernamePassword(credentialsId: 'DB_HOST', passwordVariable: 'DB_PASS', usernameVariable: 'DB_HOST')]) {
+                // the code here can access $pass and $user
+                //sh 'echo $DB_PASS'
                 // also available as a Groovy variable
-                echo DB_HOST
+                //echo DB_HOST
                 // or inside double quotes for string interpolation
-                echo "username is $DB_HOST"
+               // echo "username is $DB_HOST"
 }
                 //echo "Build"
             }
