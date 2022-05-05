@@ -6,16 +6,16 @@ pipeline {
     }
     stages {
         stage('Build') { 
-    environment {
-         SECRET_FILE_ID = credentials('DB_CREDS')
-         DB_HOST = credentials('MONGODB_HOST')
-    }
             steps {
+             
+                withCredentials([file(credentialsId: 'DB_CREDS', variable: 'DB_CREDS')]) {
+                // some block
                 echo "DISPLAYING ALL ENVIRONMENT VARIABLES...."
                 echo "JWT_KEY: ${JWT_KEY}"
-                echo "HOST: ${DB_HOST}"
-                echo "PASSWORD: ${DB_PASS}"
+                echo "HOST: ${MONGODB_HOST}"
+                echo "PASSWORD: ${MONGODB_HOST}"
                 echo "#####Initiating Deployment "
+        }
                 sh "make install"
                 //echo "Build"
             }
