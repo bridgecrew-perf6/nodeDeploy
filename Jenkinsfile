@@ -2,11 +2,12 @@ pipeline {
     agent any 
     environment {
          SERVICE_NAME = "NodeJS Demo APP"
-         SECRET_FILE_ID = credentials('DB_CREDS')
+         
     }
     stages {
         stage('Build') { 
     environment {
+         SECRET_FILE_ID = credentials('DB_CREDS')
          DB_HOST = credentials('MONGODB_HOST')
 		 DB_PASS = credentials('MONGODB_PASS')
          JWT_KEY = credentials('JWT_KEY')
