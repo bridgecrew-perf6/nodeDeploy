@@ -11,7 +11,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'DB_CREDS', variable: 'DB_CREDS')]) {
                 // some block
                 echo "DISPLAYING ALL ENVIRONMENT VARIABLES...."
-               echo $JWT_KEY
+               echo  JWT_KEY
                 echo "#####Initiating Deployment "
         }
                 sh "make install"
