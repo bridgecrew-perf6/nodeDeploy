@@ -7,6 +7,14 @@ pipeline {
         stage('Build') { 
             steps {
                 sh "make install"
+                withCredentials([usernamePassword(credentialsId: 'DB_HOST', passwordVariable: 'DB_PASS', usernameVariable: 'DB_HOST')]) {
+    // the code here can access $pass and $user
+                sh 'echo $DB_PASS'
+                // also available as a Groovy variable
+                echo DB_HOST
+                // or inside double quotes for string interpolation
+                echo "username is $DB_HOST"
+}
                 //echo "Build"
             }
         }
