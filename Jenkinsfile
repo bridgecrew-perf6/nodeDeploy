@@ -8,12 +8,14 @@ pipeline {
         stage('Build') { 
             steps {
              
-                withCredentials([file(credentialsId: 'DB_CREDS', variable: 'DB_CREDS')]) {
-                // some block
-                echo "DISPLAYING ALL ENVIRONMENT VARIABLES...."
-               echo  JWT_KEY
-                echo "#####Initiating Deployment "
-        }
+            withCredentials([usernamePassword(credentialsId: 'DB_HOST', passwordVariable: 'value', usernameVariable: 'HOST')]) {
+
+            sh 'echo $value'
+            // also available as a Groovy variable
+            echo HOST
+            // or inside double quotes for string interpolation
+            echo "username is $HOST"
+            }
                 sh "make install"
                 //echo "Build"
             }
