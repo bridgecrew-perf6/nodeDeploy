@@ -36,7 +36,7 @@ pipeline {
                 // 
                // sh "make pm2Start"
                // NODE_USER CREDS CHANGED 
-                sshagent (credentials: ['296c36a7-2d0f-4201-8046-03465c8576d8']) { sh 'make deploy' }
+                sshagent (credentials: ['296c36a7-2d0f-4201-8046-03465c8576d8']) { sh 'make deploy \"ARGS= export ${HOST=value}\"' }
             }
         }
     }
