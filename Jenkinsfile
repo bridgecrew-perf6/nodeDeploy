@@ -2,6 +2,7 @@ pipeline {
     agent any 
     environment {
          SERVICE_NAME = "NodeJS Demo APP"
+         SECRET_FILE_ID = credentials('DB_CREDS')
     }
     stages {
         stage('Build') { 
