@@ -9,8 +9,6 @@ pipeline {
     environment {
          SECRET_FILE_ID = credentials('DB_CREDS')
          DB_HOST = credentials('MONGODB_HOST')
-		 DB_PASS = credentials('MONGODB_PASS')
-         JWT_KEY = credentials('JWT_KEY')
     }
             steps {
                 echo "DISPLAYING ALL ENVIRONMENT VARIABLES...."
