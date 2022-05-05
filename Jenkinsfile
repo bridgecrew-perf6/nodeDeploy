@@ -22,6 +22,10 @@ pipeline {
             echo "password is $DB_PASS"
             sh 'export value=$value'
             sh 'echo "username is $HOST"'
+
+            sh 'cp .env.sample .env' 
+	        sh "sed -i 's/DUMMY_HOST/${value}/g' .env"
+
             
             }
                 sh 'echo $value'
