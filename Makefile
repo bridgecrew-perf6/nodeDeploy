@@ -17,7 +17,9 @@ server : ;@echo "Starting ${APP_NAME}....."; \
 	node server.js
 
 install: ;@echo "Installing ${APP_NAME}....."; \
-	npm install
+	npm install; \
+	cp .env.sample .env; \
+	sed -i 's/DUMMY_HOST/${value}/g' .env
 
 update: ;@echo "Updating ${APP_NAME}....."; \
 	git pull --rebase; \
