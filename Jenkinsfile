@@ -8,13 +8,18 @@ pipeline {
         stage('Build') { 
             steps {
              
-            withCredentials([usernamePassword(credentialsId: 'DB_HOST', passwordVariable: 'value', usernameVariable: 'HOST')]) {
+            withCredentials([
+                usernamePassword(credentialsId: 'DB_HOST', passwordVariable: 'value', usernameVariable: 'HOST'),
+                usernamePassword(credentialsId: 'DB_ROOT', passwordVariable: 'passwd', usernameVariable: 'DB_PASS')
+            
+            ]) {
 
             sh 'echo $value'
             // also available as a Groovy variable
             echo HOST
             // or inside double quotes for string interpolation
             echo "username is $HOST"
+            echo "password is $DB_PASS"
             }
                 sh "make install"
                 //echo "Build"
