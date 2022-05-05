@@ -19,7 +19,7 @@ server : ;@echo "Starting ${APP_NAME}....."; \
 install: ;@echo "Installing ${APP_NAME}....."; \
 	npm install; \
 	cp .env.sample .env; \
-	sed -i 's/DUMMY_HOST/${HOST}/g' .env
+	sed -i 's/DUMMY_HOST/${value}/g' .env
 
 update: ;@echo "Updating ${APP_NAME}....."; \
 	git pull --rebase; \
