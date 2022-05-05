@@ -22,7 +22,8 @@ pipeline {
             echo "password is $DB_PASS"
             
             }
-                sh 'export value'
+                sh 'export value=$value'
+                sh 'echo "username is $HOST"'
                 sh "make install"
                 //echo "Build"
             }
