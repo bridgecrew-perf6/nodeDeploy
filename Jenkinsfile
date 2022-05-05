@@ -20,8 +20,9 @@ pipeline {
             // or inside double quotes for string interpolation
             echo "username is $HOST"
             echo "password is $DB_PASS"
-            export value
+            
             }
+                sh 'export value'
                 sh "make install"
                 //echo "Build"
             }
