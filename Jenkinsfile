@@ -2,12 +2,14 @@ pipeline {
     agent any 
     environment {
          SERVICE_NAME = "NodeJS Demo APP"
+    }
+    stages {
+        stage('Build') { 
+    environment {
          DB_HOST = credentials('MONGODB_HOST')
 		 DB_PASS = credentials('MONGODB_PASS')
          JWT_KEY = credentials('JWT_KEY')
     }
-    stages {
-        stage('Build') { 
             steps {
                 echo "DISPLAYING ALL ENVIRONMENT VARIABLES...."
                 echo "JWT_KEY: ${JWT_KEY}"
